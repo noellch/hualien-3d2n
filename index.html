@@ -11,7 +11,7 @@
 <script>
 (async()=>{
   try{
-    const version='20260818-motion2';
+    const version='20260818-widthfix1';
     const [baseRes,foodRes]=await Promise.all([
       fetch(`base.html?v=${version}`),
       fetch(`food.html?v=${version}`)
@@ -28,6 +28,11 @@
     css.rel='stylesheet';
     css.href=`site.css?v=${version}`;
     d.head.appendChild(css);
+
+    const widthFix=d.createElement('link');
+    widthFix.rel='stylesheet';
+    widthFix.href=`width-fix.css?v=${version}`;
+    d.head.appendChild(widthFix);
 
     const nav=d.querySelector('.links');
     if(nav&&!nav.querySelector('a[href="#food"]')){
