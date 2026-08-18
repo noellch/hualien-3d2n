@@ -1,0 +1,77 @@
+/* Width / overflow hotfix — keeps the POPEYE layout and motion, fixes viewport drift */
+html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+body{position:relative}
+*,*::before,*::after{box-sizing:border-box}
+main,header,nav,section,footer{width:100%;max-width:100%;min-width:0}
+.wrap{width:min(calc(100% - 36px),1180px)!important;max-width:1180px!important;margin-left:auto!important;margin-right:auto!important;min-width:0!important}
+.hero,.hero-grid,.hero-main,.hero-side,.stats,.stat,.intro,.day,.day-index,.day-main,.weather,.transport,.scores,.score,.spot-head,.routes,.route-guide,.spot-list,.spot,.spot-meta,.food-intro,.food-list,.food-item,.food-name,.food-copy,.food-side,.utility,.utility-list,.utility-item{min-width:0;max-width:100%}
+.hero-grid{width:min(calc(100% - 36px),1180px)!important;margin-inline:auto!important}
+.hero-main{overflow:hidden}
+.hero-title,.hero-copy,.mast,.stats{max-width:100%}
+.hero h1,.hero h1 small,.headline,.choice,.day-main h3,.spot h3,.food-name h3{overflow-wrap:break-word;word-break:normal}
+.links{min-width:0;max-width:100%;overflow-x:auto!important;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-inline:contain}
+.links::-webkit-scrollbar{display:none}
+nav .wrap{overflow:hidden}
+.day{grid-template-columns:155px minmax(0,1fr) minmax(220px,260px)!important}
+.row{grid-template-columns:120px minmax(0,1fr)!important}
+.transport{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important}
+.score{grid-template-columns:52px minmax(0,1fr) 92px!important}
+.spot-head{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+.routes{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+.spot{grid-template-columns:110px 260px minmax(0,1fr) 170px!important}
+.food-intro{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)!important}
+.food-item{grid-template-columns:90px 210px minmax(0,1fr) 160px!important}
+.utility{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)!important}
+.utility-item>*{min-width:0}
+.utility-item small{overflow-wrap:anywhere;text-align:right}
+
+@media(max-width:960px){
+  .wrap,.hero-grid{width:min(calc(100% - 28px),1180px)!important}
+  .intro,.transport,.spot-head,.utility,.food-intro{grid-template-columns:minmax(0,1fr)!important}
+  .day{grid-template-columns:120px minmax(0,1fr)!important}
+  .weather{grid-template-columns:140px 110px minmax(0,1fr)!important}
+  .routes{grid-template-columns:minmax(0,1fr)!important}
+  .spot{grid-template-columns:82px 190px minmax(0,1fr)!important}
+  .spot-meta{grid-column:3!important}
+  .food-item{grid-template-columns:68px 180px minmax(0,1fr)!important}
+  .food-side{grid-column:3!important}
+}
+
+@media(max-width:680px){
+  .wrap,.hero-grid{width:calc(100% - 24px)!important;max-width:calc(100% - 24px)!important;margin-inline:12px!important}
+  .hero-grid{overflow:hidden!important}
+  .hero-main{padding-left:16px!important;padding-right:16px!important}
+  .mast{gap:12px!important}
+  .brand{max-width:58%;font-size:clamp(1.8rem,9vw,2.25rem)!important}
+  .meta{max-width:40%;font-size:.58rem!important}
+  .hero h1{font-size:clamp(3.7rem,19vw,5.4rem)!important;max-width:100%}
+  .hero h1 small{font-size:clamp(1.35rem,7vw,2rem)!important}
+  .stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  .stat{min-width:0!important;padding:12px 10px!important}
+  .stat:nth-child(odd){padding-left:0!important}
+  .stat span{overflow-wrap:anywhere}
+  nav .wrap{width:100%!important;max-width:100%!important;margin:0!important;padding-inline:12px!important}
+  .links{width:100%!important;max-width:100%!important;gap:18px!important;padding-right:16px}
+  .day{grid-template-columns:minmax(0,1fr)!important;width:100%!important}
+  .day-index,.day-main,.weather{width:100%!important;max-width:100%!important}
+  .row{grid-template-columns:82px minmax(0,1fr)!important;gap:12px!important}
+  .weather{display:block!important}
+  .score{grid-template-columns:38px minmax(0,1fr)!important;width:100%!important}
+  .badge{grid-column:2!important;justify-self:start!important}
+  .spot{grid-template-columns:54px minmax(0,1fr)!important;width:100%!important;gap:14px!important}
+  .spot h3,.spot p,.spot-meta{grid-column:2!important;min-width:0!important}
+  .spot-meta{display:flex!important;flex-wrap:wrap!important}
+  .food-item{grid-template-columns:48px minmax(0,1fr)!important;width:100%!important;gap:12px!important}
+  .food-name,.food-copy,.food-side{grid-column:2!important;min-width:0!important}
+  .food-side{display:flex!important;flex-wrap:wrap!important;align-items:center!important}
+  .utility-item{align-items:flex-start!important}
+  .utility-item small{max-width:42%;font-size:.68rem}
+  .hero-grid::before{right:-24vw!important;font-size:78vw!important;bottom:-7svh!important}
+}
+
+@media(max-width:390px){
+  .wrap,.hero-grid{width:calc(100% - 20px)!important;max-width:calc(100% - 20px)!important;margin-inline:10px!important}
+  .hero-main{padding-left:12px!important;padding-right:12px!important}
+  .row{grid-template-columns:72px minmax(0,1fr)!important}
+  .stat{padding-inline:7px!important}
+}
